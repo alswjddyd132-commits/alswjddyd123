@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>민정용 | QA & 기획 포트폴리오</title>
+    <title>민정용 포트폴리오</title>
     <!-- 고급 폰트 적용 -->
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css" />
     <style>
         :root {
-            --primary: #2563eb;       /* 신뢰감을 주는 블루 */
+            --primary: #2563eb;
             --bg-color: #ffffff;
             --section-bg: #f8fafc;
             --text-main: #0f172a;
@@ -24,14 +24,12 @@
             background-color: var(--bg-color);
         }
 
-        /* 중앙 정렬 컨테이너 - 넓이를 제한하여 가독성 향상 */
         .container {
             max-width: 900px;
             margin: 0 auto;
             padding: 0 30px;
         }
 
-        /* 큼직한 섹션 여백으로 스크롤 유도 */
         section {
             padding: 120px 0;
             border-bottom: 1px solid #e2e8f0;
@@ -41,25 +39,22 @@
             border-bottom: none;
         }
 
-        /* 섹션 타이틀 */
         .section-title {
             font-size: 2.5em;
             font-weight: 800;
             margin-bottom: 50px;
             color: #1e293b;
         }
-        .section-title span {
-            color: var(--primary);
-        }
 
-        /* 인트로 (메인 화면) */
+        /* 인트로 */
         .hero {
-            min-height: 80vh;
+            min-height: 60vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             padding: 0;
             border-bottom: none;
+            margin-top: 80px;
         }
         .hero h1 {
             font-size: 4em;
@@ -73,35 +68,15 @@
             color: var(--text-sub);
             font-weight: 500;
             margin-bottom: 40px;
+            border-left: 4px solid var(--primary);
+            padding-left: 15px;
         }
-        .hero .contact-btn {
-            display: inline-block;
-            background: var(--text-main);
-            color: #fff;
-            padding: 15px 30px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: background 0.2s;
-        }
-        .hero .contact-btn:hover { background: var(--primary); }
-
-        /* 스킬 배지 */
-        .skills-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-        }
-        .skill-badge {
-            background: #e0e7ff;
-            color: var(--primary);
-            padding: 10px 20px;
-            border-radius: 12px;
+        .hero .contact-info {
             font-size: 1.1em;
-            font-weight: 700;
+            color: var(--text-sub);
         }
 
-        /* 프로젝트 세로형 카드 (내용을 풍성하게 보이도록) */
+        /* 프로젝트 리스트 */
         .project-block {
             margin-bottom: 80px;
         }
@@ -144,7 +119,6 @@
             font-weight: 600;
         }
 
-        /* 상세 성과 리스트 (행간을 넓혀서 텍스트가 많아 보이게 함) */
         .achievement-list {
             list-style: none;
             background: #ffffff;
@@ -156,13 +130,13 @@
         .achievement-list li {
             position: relative;
             padding-left: 28px;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             font-size: 1.15em;
             color: #334155;
         }
         .achievement-list li:last-child { margin-bottom: 0; }
         .achievement-list li::before {
-            content: "✓";
+            content: "-";
             color: var(--primary);
             position: absolute;
             left: 0;
@@ -170,7 +144,7 @@
             font-size: 1.1em;
         }
 
-        /* 이력 리스트 */
+        /* 일반 리스트 (학력, 경력) */
         .history-list { list-style: none; }
         .history-list li {
             font-size: 1.2em;
@@ -179,118 +153,71 @@
             border-bottom: 1px dashed #cbd5e1;
         }
         .history-list li:last-child { border-bottom: none; }
-        .history-date { display: block; color: var(--primary); font-size: 0.85em; font-weight: 700; margin-bottom: 5px; }
-
     </style>
 </head>
 <body>
 
-    <!-- 메인 소개 섹션 (화면 꽉 차게) -->
     <section class="hero container">
-        <h1>안녕하세요,<br>QA 엔지니어 <span>민정용</span>입니다.</h1>
-        <div class="tagline">기획의 의도를 분석하고 구조적인 검증을 통해 게임의 완성도를 높입니다.</div>
-        <div>
-            <a href="mailto:ddas132@naver.com" class="contact-btn">이메일 보내기</a>
+        <h1>민정용</h1>
+        <div class="tagline">기획의 의도를 구조적으로 검증하는 QA</div>
+        <div class="contact-info">
+            이메일: ddas132@naver.com
         </div>
     </section>
 
-    <!-- 스킬 섹션 -->
-    <section class="container" style="padding-top: 60px;">
-        <h2 class="section-title">Core <span>Skills</span></h2>
-        <div class="skills-container">
-            <span class="skill-badge">Quality Assurance</span>
-            <span class="skill-badge">게임 기획 및 밸런싱</span>
-            <span class="skill-badge">Unity (C#)</span>
-            <span class="skill-badge">GitHub 협업</span>
-            <span class="skill-badge">테스트 시나리오 설계</span>
-        </div>
+    <section class="container">
+        <h2 class="section-title">학력</h2>
+        <ul class="history-list">
+            <li>
+                <strong>2022.03 ~ 현재 | 유한대학교 | 게임콘텐츠 전공</strong>
+            </li>
+            <li>
+                <strong>2019.03 ~ 2022.02 | 광영고등학교</strong>
+            </li>
+        </ul>
     </section>
 
-    <!-- 메인 프로젝트 섹션 (세로로 길게 스크롤) -->
     <section>
         <div class="container">
-            <h2 class="section-title">Featured <span>Projects</span></h2>
+            <h2 class="section-title">프로젝트 경험</h2>
             
-            <!-- 프로젝트 1: QUDRANT -->
             <div class="project-block">
                 <div class="project-header">
                     <div class="project-title">QUDRANT <span class="project-date">2026.03 ~ 2026.06</span></div>
                 </div>
                 <div class="project-meta">
-                    <span class="meta-tag">기능 개발</span>
-                    <span class="meta-tag">기획 및 개발 (1/4명)</span>
-                    <span class="meta-tag">Unity</span>
-                    <span class="meta-tag">GitHub</span>
+                    <span class="meta-tag">구분: 기능 개발</span>
+                    <span class="meta-tag">역할: 기획 및 기능 개발 (팀 4명중 1명)</span>
+                    <span class="meta-tag">사용 기술: Unity , Git Hub</span>
                 </div>
                 <ul class="achievement-list">
-                    <li>지도 화면, UI 프레임워크 구현 및 C# 스크립트 기반 캐릭터 이동/전투 로직 개발</li>
-                    <li>오브젝트 풀링(PoolManager) 도입 및 메모리 누수 방지 최적화</li>
-                    <li>시대 변화(Age Progression)가 없는 고정 시대 배경에 맞춘 유닛 밸런싱 데이터 시트 작성 및 엣지 케이스 테스트 진행</li>
-                    <li>통합 맵 노드(Unified Map Node) 로직 작성 및 2막(Act) 전환 시 진행도 잠금 방지를 위한 패스 그룹 의존성 검증</li>
+                    <li>지도 화면 , UI 구현</li>
+                    <li>유닛 벨런싱 및 테스트 진행.</li>
                 </ul>
             </div>
 
-            <!-- 프로젝트 2: 메이플스토리 이벤트 기획 -->
-            <div class="project-block">
-                <div class="project-header">
-                    <div class="project-title">Over-Mush 이벤트 기획 <span class="project-date">2025.09 ~ 2025.12</span></div>
-                </div>
-                <div class="project-meta">
-                    <span class="meta-tag">이벤트 기획</span>
-                    <span class="meta-tag">게임 디자인</span>
-                </div>
-                <ul class="achievement-list">
-                    <li>메이플스토리 23주년 기념 'Over-Mush' 인게임 이벤트 콘텐츠 기획 및 구조 설계</li>
-                    <li>100칸 보드판을 활용한 '황금 송편' 획득 메커니즘 설계 및 타겟 유저 동선 기획</li>
-                    <li>기획 의도에 맞춘 몬스터 기믹 기획 및 보상 밸런싱 설정</li>
-                </ul>
-            </div>
-
-            <!-- 프로젝트 3: Target Color -->
             <div class="project-block">
                 <div class="project-header">
                     <div class="project-title">Target Color <span class="project-date">2025.09 ~ 2025.12</span></div>
                 </div>
                 <div class="project-meta">
-                    <span class="meta-tag">보드게임 기획</span>
-                    <span class="meta-tag">QA 및 밸런싱 (1/5명)</span>
+                    <span class="meta-tag">구분: 기획 / 문서</span>
+                    <span class="meta-tag">역할: 기획 및 QA (팀 5명중 1명)</span>
+                    <span class="meta-tag">사용 기술: 보드 게임</span>
                 </div>
                 <ul class="achievement-list">
-                    <li>서로의 색상을 추리하여 아웃시키는(Out) 소셜 디덕션 장르 보드게임 룰셋 기획</li>
-                    <li>아웃(Out), 방어(Defense), 함정(Trap) 등 주요 카드 메커니즘 설계 및 리소스 제작</li>
-                    <li>플레이어 간 밸런싱 테스트 진행 및 룰 충돌을 방지하기 위한 QA 리포트 작성</li>
-                </ul>
-            </div>
-
-            <!-- 프로젝트 4: Sneaking Stealth 피칭 -->
-            <div class="project-block">
-                <div class="project-header">
-                    <div class="project-title">Sneaking Stealth <span class="project-date">2026.03 ~ 2026.05</span></div>
-                </div>
-                <div class="project-meta">
-                    <span class="meta-tag">비즈니스 기획</span>
-                    <span class="meta-tag">시장 분석</span>
-                </div>
-                <ul class="achievement-list">
-                    <li>모바일 게임 'Sneaking Stealth' 린 캔버스(Lean Canvas) 기반 3년 단위 시장 분석</li>
-                    <li>ASO(앱 스토어 최적화) 키워드 도출 및 마케팅 전략 수립</li>
-                    <li>30초에서 3분 분량의 단계별 투자자 피칭 대본 작성 및 비즈니스 모델 구축</li>
+                    <li>보드게임 카드 이미지 제작</li>
+                    <li>벨런싱 및 QA</li>
                 </ul>
             </div>
         </div>
     </section>
 
-    <!-- 학력 및 기타 이력 -->
     <section class="container">
-        <h2 class="section-title">Education <span>& History</span></h2>
+        <h2 class="section-title">경력</h2>
         <ul class="history-list">
             <li>
-                <span class="history-date">2022.03 ~ 현재</span>
-                <strong>유한대학교</strong> - 게임콘텐츠 전공 재학
-            </li>
-            <li>
-                <span class="history-date">2019.03 ~ 2022.02</span>
-                <strong>광영고등학교</strong> - 졸업
+                <strong>항목</strong>
             </li>
         </ul>
     </section>
