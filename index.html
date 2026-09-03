@@ -3,217 +3,297 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>민정용 | QA 포트폴리오</title>
-    <!-- 고급 폰트(Pretendard) 웹 링크 추가 -->
+    <title>민정용 | QA & 기획 포트폴리오</title>
+    <!-- 고급 폰트 적용 -->
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css" />
     <style>
         :root {
-            --primary: #4f46e5;       /* 메인 포인트 컬러 */
-            --sidebar-bg: #1e293b;    /* 좌측 사이드바 배경색 */
-            --bg-color: #f1f5f9;      /* 우측 메인 배경색 */
+            --primary: #2563eb;       /* 신뢰감을 주는 블루 */
+            --bg-color: #ffffff;
+            --section-bg: #f8fafc;
+            --text-main: #0f172a;
+            --text-sub: #475569;
         }
+        
         * { margin: 0; padding: 0; box-sizing: border-box; }
+        
         body {
-            font-family: 'Pretendard', -apple-system, sans-serif;
+            font-family: 'Pretendard', sans-serif;
+            color: var(--text-main);
+            line-height: 1.8;
             background-color: var(--bg-color);
-            color: #334155;
-            line-height: 1.6;
         }
 
-        /* 전체 화면을 꽉 채우는 좌우 분할 레이아웃 */
-        .layout {
-            display: flex;
-            min-height: 100vh;
-            width: 100%;
+        /* 중앙 정렬 컨테이너 - 넓이를 제한하여 가독성 향상 */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 30px;
         }
 
-        /* 좌측 사이드바 (프로필 및 기본 정보) */
-        .sidebar {
-            flex: 0 0 350px; /* 사이드바 고정 너비 */
-            background-color: var(--sidebar-bg);
-            color: #f8fafc;
-            padding: 60px 40px;
-            display: flex;
-            flex-direction: column;
-            gap: 40px;
+        /* 큼직한 섹션 여백으로 스크롤 유도 */
+        section {
+            padding: 120px 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        section:nth-child(even) {
+            background-color: var(--section-bg);
+            border-bottom: none;
         }
 
-        /* 우측 메인 컨텐츠 (화면 꽉 차게 늘어남) */
-        .main-content {
-            flex: 1;
-            padding: 60px;
-            overflow-y: auto;
-        }
-
-        /* 프로필 텍스트 요소 */
-        h1 { font-size: 2.8em; margin-bottom: 10px; font-weight: 800; letter-spacing: -1px; }
-        .tagline { color: #818cf8; font-size: 1.25em; font-weight: 600; margin-bottom: 20px; line-height: 1.4; }
-        .contact a { color: #cbd5e1; text-decoration: none; display: inline-block; margin-top: 10px; transition: color 0.2s; }
-        .contact a:hover { color: #ffffff; }
-
-        /* 섹션 제목 */
+        /* 섹션 타이틀 */
         .section-title {
-            font-size: 2em;
-            color: #0f172a;
-            margin-bottom: 40px;
-            border-bottom: 4px solid var(--primary);
-            display: inline-block;
-            padding-bottom: 5px;
+            font-size: 2.5em;
             font-weight: 800;
+            margin-bottom: 50px;
+            color: #1e293b;
         }
-        .sidebar h2 {
-            font-size: 1.4em;
-            color: #94a3b8;
-            border-bottom: 1px solid #334155;
-            padding-bottom: 10px;
-            margin-bottom: 20px;
+        .section-title span {
+            color: var(--primary);
         }
 
-        /* 좌측 리스트 스타일 */
-        ul.sidebar-list { list-style: none; }
-        ul.sidebar-list li { margin-bottom: 20px; font-size: 1.05em; line-height: 1.4; }
-        .date { display: block; color: #94a3b8; font-size: 0.85em; margin-bottom: 5px; font-weight: 600; }
-
-        /* 프로젝트 그리드 (바둑판 배열로 화면을 알차게 씀) */
-        .project-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
-            gap: 30px;
-        }
-
-        /* 프로젝트 카드 */
-        .project-card {
-            background: #ffffff;
-            border-radius: 16px;
-            padding: 35px;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
-            border: 1px solid #e2e8f0;
+        /* 인트로 (메인 화면) */
+        .hero {
+            min-height: 80vh;
             display: flex;
             flex-direction: column;
-            transition: transform 0.2s, box-shadow 0.2s;
+            justify-content: center;
+            padding: 0;
+            border-bottom: none;
         }
-        .project-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px -5px rgba(0, 0, 0, 0.1);
-            border-color: #cbd5e1;
+        .hero h1 {
+            font-size: 4em;
+            font-weight: 900;
+            letter-spacing: -0.02em;
+            margin-bottom: 20px;
+            line-height: 1.2;
         }
+        .hero .tagline {
+            font-size: 1.5em;
+            color: var(--text-sub);
+            font-weight: 500;
+            margin-bottom: 40px;
+        }
+        .hero .contact-btn {
+            display: inline-block;
+            background: var(--text-main);
+            color: #fff;
+            padding: 15px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.2s;
+        }
+        .hero .contact-btn:hover { background: var(--primary); }
 
-        .project-header {
+        /* 스킬 배지 */
+        .skills-container {
             display: flex;
-            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .skill-badge {
+            background: #e0e7ff;
+            color: var(--primary);
+            padding: 10px 20px;
+            border-radius: 12px;
+            font-size: 1.1em;
+            font-weight: 700;
+        }
+
+        /* 프로젝트 세로형 카드 (내용을 풍성하게 보이도록) */
+        .project-block {
+            margin-bottom: 80px;
+        }
+        .project-block:last-child {
+            margin-bottom: 0;
+        }
+        .project-header {
+            margin-bottom: 25px;
+        }
+        .project-title {
+            font-size: 2em;
+            font-weight: 800;
+            color: var(--text-main);
+            display: flex;
             align-items: center;
-            margin-bottom: 15px;
+            gap: 15px;
         }
-        .project-title { font-size: 1.6em; font-weight: 800; color: #1e293b; }
-        .project-date { font-size: 0.9em; color: #64748b; font-weight: 600; background: #f1f5f9; padding: 4px 12px; border-radius: 20px; }
+        .project-date {
+            font-size: 0.5em;
+            color: var(--text-sub);
+            font-weight: 600;
+            background: #f1f5f9;
+            padding: 5px 12px;
+            border-radius: 20px;
+            vertical-align: middle;
+        }
+        
+        .project-meta {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+        .meta-tag {
+            border: 1px solid #cbd5e1;
+            padding: 6px 15px;
+            border-radius: 20px;
+            font-size: 0.95em;
+            color: var(--text-sub);
+            font-weight: 600;
+        }
 
-        .badges { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 25px; }
-        .badge { background: #e0e7ff; color: var(--primary); padding: 6px 14px; border-radius: 8px; font-size: 0.9em; font-weight: 700; }
-        .badge.role { background: #f1f5f9; color: #475569; }
-
-        .content-list { list-style: none; flex-grow: 1; }
-        .content-list li {
+        /* 상세 성과 리스트 (행간을 넓혀서 텍스트가 많아 보이게 함) */
+        .achievement-list {
+            list-style: none;
+            background: #ffffff;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+            border: 1px solid #f1f5f9;
+        }
+        .achievement-list li {
             position: relative;
-            padding-left: 24px;
-            margin-bottom: 14px;
+            padding-left: 28px;
+            margin-bottom: 20px;
+            font-size: 1.15em;
             color: #334155;
-            font-size: 1.05em;
         }
-        .content-list li::before {
+        .achievement-list li:last-child { margin-bottom: 0; }
+        .achievement-list li::before {
             content: "✓";
             color: var(--primary);
             position: absolute;
             left: 0;
-            font-weight: bold;
+            font-weight: 900;
+            font-size: 1.1em;
         }
 
-        /* 모바일/태블릿 화면 좁아질 때 반응형 처리 */
-        @media (max-width: 950px) {
-            .layout { flex-direction: column; }
-            .sidebar { flex: none; width: 100%; padding: 40px 30px; }
-            .main-content { padding: 40px 30px; }
-            .project-grid { grid-template-columns: 1fr; }
+        /* 이력 리스트 */
+        .history-list { list-style: none; }
+        .history-list li {
+            font-size: 1.2em;
+            margin-bottom: 25px;
+            padding-bottom: 25px;
+            border-bottom: 1px dashed #cbd5e1;
         }
+        .history-list li:last-child { border-bottom: none; }
+        .history-date { display: block; color: var(--primary); font-size: 0.85em; font-weight: 700; margin-bottom: 5px; }
+
     </style>
 </head>
 <body>
-    <div class="layout">
-        <!-- 좌측 사이드바 -->
-        <aside class="sidebar">
-            <header>
-                <h1>민정용</h1>
-                <div class="tagline">기획의 의도를<br>구조적으로 검증하는 QA</div>
-                <div class="contact">
-                    <a href="mailto:ddas132@naver.com">✉️ ddas132@naver.com</a>
-                </div>
-            </header>
 
-            <section>
-                <h2>Education</h2>
-                <ul class="sidebar-list">
-                    <li>
-                        <span class="date">2022.03 ~ 현재</span>
-                        유한대학교 게임콘텐츠 전공
-                    </li>
-                    <li>
-                        <span class="date">2019.03 ~ 2022.02</span>
-                        광영고등학교
-                    </li>
-                </ul>
-            </section>
+    <!-- 메인 소개 섹션 (화면 꽉 차게) -->
+    <section class="hero container">
+        <h1>안녕하세요,<br>QA 엔지니어 <span>민정용</span>입니다.</h1>
+        <div class="tagline">기획의 의도를 분석하고 구조적인 검증을 통해 게임의 완성도를 높입니다.</div>
+        <div>
+            <a href="mailto:ddas132@naver.com" class="contact-btn">이메일 보내기</a>
+        </div>
+    </section>
 
-            <section>
-                <h2>Experience</h2>
-                <ul class="sidebar-list">
-                    <li>
-                        <span class="date">관련 경력</span>
-                        항목 추가 예정
-                    </li>
-                </ul>
-            </section>
-        </aside>
+    <!-- 스킬 섹션 -->
+    <section class="container" style="padding-top: 60px;">
+        <h2 class="section-title">Core <span>Skills</span></h2>
+        <div class="skills-container">
+            <span class="skill-badge">Quality Assurance</span>
+            <span class="skill-badge">게임 기획 및 밸런싱</span>
+            <span class="skill-badge">Unity (C#)</span>
+            <span class="skill-badge">GitHub 협업</span>
+            <span class="skill-badge">테스트 시나리오 설계</span>
+        </div>
+    </section>
 
-        <!-- 우측 메인 컨텐츠 -->
-        <main class="main-content">
-            <h2 class="section-title">Projects</h2>
+    <!-- 메인 프로젝트 섹션 (세로로 길게 스크롤) -->
+    <section>
+        <div class="container">
+            <h2 class="section-title">Featured <span>Projects</span></h2>
             
-            <div class="project-grid">
-                <!-- QUDRANT -->
-                <div class="project-card">
-                    <div class="project-header">
-                        <div class="project-title">QUDRANT</div>
-                        <div class="project-date">2026.03 ~ 2026.06</div>
-                    </div>
-                    <div class="badges">
-                        <span class="badge">기능 개발</span>
-                        <span class="badge role">기획 및 기능 개발 (1/4명)</span>
-                        <span class="badge">Unity</span>
-                        <span class="badge">GitHub</span>
-                    </div>
-                    <ul class="content-list">
-                        <li>지도 화면 및 UI 프레임워크 구현</li>
-                        <li>유닛 밸런싱 데이터 시트 작성 및 엣지 케이스 테스트 진행</li>
-                    </ul>
+            <!-- 프로젝트 1: QUDRANT -->
+            <div class="project-block">
+                <div class="project-header">
+                    <div class="project-title">QUDRANT <span class="project-date">2026.03 ~ 2026.06</span></div>
                 </div>
-
-                <!-- Target Color -->
-                <div class="project-card">
-                    <div class="project-header">
-                        <div class="project-title">Target Color</div>
-                        <div class="project-date">2025.09 ~ 2025.12</div>
-                    </div>
-                    <div class="badges">
-                        <span class="badge">기획 / 문서</span>
-                        <span class="badge role">기획 및 QA (1/5명)</span>
-                        <span class="badge">보드게임</span>
-                    </div>
-                    <ul class="content-list">
-                        <li>보드게임 룰셋 기획 및 카드 이미지 리소스 제작</li>
-                        <li>플레이어 간 밸런싱 테스트 및 QA 리포트 작성</li>
-                    </ul>
+                <div class="project-meta">
+                    <span class="meta-tag">기능 개발</span>
+                    <span class="meta-tag">기획 및 개발 (1/4명)</span>
+                    <span class="meta-tag">Unity</span>
+                    <span class="meta-tag">GitHub</span>
                 </div>
+                <ul class="achievement-list">
+                    <li>지도 화면, UI 프레임워크 구현 및 C# 스크립트 기반 캐릭터 이동/전투 로직 개발</li>
+                    <li>오브젝트 풀링(PoolManager) 도입 및 메모리 누수 방지 최적화</li>
+                    <li>시대 변화(Age Progression)가 없는 고정 시대 배경에 맞춘 유닛 밸런싱 데이터 시트 작성 및 엣지 케이스 테스트 진행</li>
+                    <li>통합 맵 노드(Unified Map Node) 로직 작성 및 2막(Act) 전환 시 진행도 잠금 방지를 위한 패스 그룹 의존성 검증</li>
+                </ul>
             </div>
-        </main>
-    </div>
+
+            <!-- 프로젝트 2: 메이플스토리 이벤트 기획 -->
+            <div class="project-block">
+                <div class="project-header">
+                    <div class="project-title">Over-Mush 이벤트 기획 <span class="project-date">2025.09 ~ 2025.12</span></div>
+                </div>
+                <div class="project-meta">
+                    <span class="meta-tag">이벤트 기획</span>
+                    <span class="meta-tag">게임 디자인</span>
+                </div>
+                <ul class="achievement-list">
+                    <li>메이플스토리 23주년 기념 'Over-Mush' 인게임 이벤트 콘텐츠 기획 및 구조 설계</li>
+                    <li>100칸 보드판을 활용한 '황금 송편' 획득 메커니즘 설계 및 타겟 유저 동선 기획</li>
+                    <li>기획 의도에 맞춘 몬스터 기믹 기획 및 보상 밸런싱 설정</li>
+                </ul>
+            </div>
+
+            <!-- 프로젝트 3: Target Color -->
+            <div class="project-block">
+                <div class="project-header">
+                    <div class="project-title">Target Color <span class="project-date">2025.09 ~ 2025.12</span></div>
+                </div>
+                <div class="project-meta">
+                    <span class="meta-tag">보드게임 기획</span>
+                    <span class="meta-tag">QA 및 밸런싱 (1/5명)</span>
+                </div>
+                <ul class="achievement-list">
+                    <li>서로의 색상을 추리하여 아웃시키는(Out) 소셜 디덕션 장르 보드게임 룰셋 기획</li>
+                    <li>아웃(Out), 방어(Defense), 함정(Trap) 등 주요 카드 메커니즘 설계 및 리소스 제작</li>
+                    <li>플레이어 간 밸런싱 테스트 진행 및 룰 충돌을 방지하기 위한 QA 리포트 작성</li>
+                </ul>
+            </div>
+
+            <!-- 프로젝트 4: Sneaking Stealth 피칭 -->
+            <div class="project-block">
+                <div class="project-header">
+                    <div class="project-title">Sneaking Stealth <span class="project-date">2026.03 ~ 2026.05</span></div>
+                </div>
+                <div class="project-meta">
+                    <span class="meta-tag">비즈니스 기획</span>
+                    <span class="meta-tag">시장 분석</span>
+                </div>
+                <ul class="achievement-list">
+                    <li>모바일 게임 'Sneaking Stealth' 린 캔버스(Lean Canvas) 기반 3년 단위 시장 분석</li>
+                    <li>ASO(앱 스토어 최적화) 키워드 도출 및 마케팅 전략 수립</li>
+                    <li>30초에서 3분 분량의 단계별 투자자 피칭 대본 작성 및 비즈니스 모델 구축</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- 학력 및 기타 이력 -->
+    <section class="container">
+        <h2 class="section-title">Education <span>& History</span></h2>
+        <ul class="history-list">
+            <li>
+                <span class="history-date">2022.03 ~ 현재</span>
+                <strong>유한대학교</strong> - 게임콘텐츠 전공 재학
+            </li>
+            <li>
+                <span class="history-date">2019.03 ~ 2022.02</span>
+                <strong>광영고등학교</strong> - 졸업
+            </li>
+        </ul>
+    </section>
+
 </body>
 </html>
