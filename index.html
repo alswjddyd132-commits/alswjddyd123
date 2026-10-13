@@ -331,6 +331,24 @@
             transition: width .25s, background .25s;
         }
         .gallery-dot.on { width: 20px; background: var(--accent); }
+        .gallery-badge {
+            position: absolute;
+            top: 10px; left: 10px;
+            font-size: 0.75em;
+            font-weight: 700;
+            color: #fff;
+            background: rgba(0,0,0,0.6);
+            border: 1px solid rgba(255,255,255,0.25);
+            border-radius: 4px;
+            padding: 2px 8px;
+            pointer-events: none;
+        }
+        .gallery-note {
+            margin-top: 8px;
+            text-align: center;
+            font-size: 0.85em;
+            color: var(--ink-faint);
+        }
 
         .points { list-style: none; }
         .points li {
@@ -504,9 +522,11 @@
                         <img src="images/targetcolor-3.jpg" alt="게임 준비: 순서와 색상 정하기" loading="lazy">
                         <img src="images/targetcolor-4.jpg" alt="이벤트 카드 설명: 스왑 카드" loading="lazy">
                     </div>
+                    <span class="gallery-badge">발표 자료</span>
                     <button class="gallery-btn prev" type="button" aria-label="이전 사진">‹</button>
                     <button class="gallery-btn next" type="button" aria-label="다음 사진">›</button>
                     <div class="gallery-foot"></div>
+                    <p class="gallery-note">실물 보드게임 사진 대신 프로젝트 발표 때 사용한 자료로 게임 소개와 규칙을 보여드립니다.</p>
                 </div>
                 <div class="meta">
                     <span class="meta-tag"><b>구분</b> 기획 / 문서</span>
