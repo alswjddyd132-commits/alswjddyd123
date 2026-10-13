@@ -224,14 +224,12 @@
             color: var(--ink-sub);
         }
 
-        .tool-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
-        .tool {
-            font-size: 0.9em;
-            font-weight: 600;
-            background: var(--panel);
-            border: 1px solid var(--line);
-            border-radius: 8px;
-            padding: 6px 14px;
+        .timeline.tools .period {
+            font-family: 'Pretendard', sans-serif;
+            font-size: 0.95em;
+            font-weight: 800;
+            color: var(--ink);
+            padding-top: 0;
         }
 
         /* 프로젝트 */
@@ -770,10 +768,16 @@
 
             <div class="sub-block">
                 <p class="sub-title">사용 툴</p>
-                <div class="tool-row">
-                    <span class="tool">Unity</span>
-                    <span class="tool">GitHub</span>
-                </div>
+                <ul class="timeline tools">
+                    <li>
+                        <span class="period">Unity</span>
+                        <span class="what">게임 개발<span>QUADRANT 지도 화면·UI 구현, 유닛 밸런싱 테스트</span></span>
+                    </li>
+                    <li>
+                        <span class="period">GitHub</span>
+                        <span class="what">협업 · 배포<span>QUADRANT 팀 프로젝트, 이 포트폴리오 사이트 관리 및 Vercel 배포</span></span>
+                    </li>
+                </ul>
             </div>
         </section>
 
