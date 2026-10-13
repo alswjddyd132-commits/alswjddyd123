@@ -291,10 +291,10 @@
             width: 100%;
             aspect-ratio: 16 / 9;
             object-fit: contain;
-            image-rendering: pixelated;
             scroll-snap-align: start;
             display: block;
         }
+        .gallery.pixel img { image-rendering: pixelated; }
         .gallery-btn {
             position: absolute;
             top: 50%;
@@ -471,7 +471,7 @@
                     <h3 class="project-title">QUADRANT</h3>
                     <span class="project-date">2026.03 – 2026.06</span>
                 </div>
-                <div class="gallery">
+                <div class="gallery pixel">
                     <div class="gallery-track">
                         <img src="images/quadrant-1.png" alt="QUADRANT 타이틀 화면" loading="lazy">
                         <img src="images/quadrant-2.png" alt="QUADRANT 지도 화면" loading="lazy">
@@ -496,6 +496,17 @@
                 <div class="project-top">
                     <h3 class="project-title">Target Color</h3>
                     <span class="project-date">2025.09 – 2025.12</span>
+                </div>
+                <div class="gallery">
+                    <div class="gallery-track">
+                        <img src="images/targetcolor-1.jpg" alt="Target Color 타이틀: 5~6인, 8분 이상, 12세 이상 심리 전략 게임" loading="lazy">
+                        <img src="images/targetcolor-2.jpg" alt="기본 규칙: R, O, Y, G, B 순서로 이어지는 색상 카드" loading="lazy">
+                        <img src="images/targetcolor-3.jpg" alt="게임 준비: 순서와 색상 정하기" loading="lazy">
+                        <img src="images/targetcolor-4.jpg" alt="이벤트 카드 설명: 스왑 카드" loading="lazy">
+                    </div>
+                    <button class="gallery-btn prev" type="button" aria-label="이전 사진">‹</button>
+                    <button class="gallery-btn next" type="button" aria-label="다음 사진">›</button>
+                    <div class="gallery-foot"></div>
                 </div>
                 <div class="meta">
                     <span class="meta-tag"><b>구분</b> 기획 / 문서</span>
