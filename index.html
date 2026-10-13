@@ -581,6 +581,34 @@
             font-weight: 700;
         }
 
+        .mini-title {
+            font-weight: 800;
+            font-size: 1.02em;
+            margin: 26px 0 12px;
+        }
+        .split {
+            border: 1px solid var(--line);
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 4px 0 18px;
+        }
+        .split-row {
+            display: grid;
+            grid-template-columns: 150px 170px 1fr;
+            gap: 14px;
+            padding: 12px 16px;
+            font-size: 0.9em;
+            word-break: keep-all;
+        }
+        .split-row + .split-row { border-top: 1px dashed var(--line); }
+        .split-name { font-weight: 800; }
+        .split-how { color: var(--ink-sub); }
+        .split-how b { color: var(--accent); }
+        .split-get { color: #333843; }
+        @media (max-width: 860px) {
+            .split-row { grid-template-columns: 1fr; gap: 2px; }
+        }
+
         /* 결론 */
         .conclusion {
             border-top: 2px solid var(--ink);
@@ -926,6 +954,36 @@
                         <span>애니·콘서트로 여운</span>
                     </div>
                     <p>각 재미요소가 따로 노는 게 아니라 <b>한 흐름</b>으로 이어지도록 일정이 배치됐다. 방송이 기대를 만들고, 업데이트가 돌아올 이유와 보상을 동시에 주고, 늘어난 캐릭터가 덱 구성으로 플레이 시간을 붙잡는다.</p>
+                    <p class="mini-title">600회는 어떻게 나눠졌나</p>
+                    <div class="gallery">
+                        <div class="gallery-track">
+                            <img src="images/trickcal-event-1.jpg" alt="3주년 이벤트 '은방울꽃에 맺힌 기억': 접속 시 사도 모집 티켓 30개, 취향 모집 티켓 30개 지급" loading="lazy">
+                            <img src="images/trickcal-event-2.jpg" alt="3주년 이벤트 '네잎클로버를 찾아서': 최대 15일 누적 출석 보상" loading="lazy">
+                        </div>
+                        <button class="gallery-btn prev" type="button" aria-label="이전 사진">‹</button>
+                        <button class="gallery-btn next" type="button" aria-label="다음 사진">›</button>
+                        <div class="gallery-foot"></div>
+                        <p class="gallery-note">출처: 트릭컬 리바이브 공식 3주년 이벤트 페이지</p>
+                    </div>
+                    <div class="split">
+                        <div class="split-row">
+                            <span class="split-name">은방울꽃에 맺힌 기억</span>
+                            <span class="split-how">기간 중 접속하면 바로</span>
+                            <span class="split-get">사도 모집 30 + 취향 모집 30</span>
+                        </div>
+                        <div class="split-row">
+                            <span class="split-name">네잎클로버를 찾아서</span>
+                            <span class="split-how">최대 15일 <b>누적</b> 출석</span>
+                            <span class="split-get">사도 모집 180 + 취향 모집 180, 1·15일차 확정 모집권(에르핀·네르)</span>
+                        </div>
+                        <div class="split-row">
+                            <span class="split-name">축제 쿠폰 이벤트 등</span>
+                            <span class="split-how">복권판·뽑기판, 침공 스테이지 재화</span>
+                            <span class="split-get">의상·수집품 등 기타 보상</span>
+                        </div>
+                    </div>
+                    <p>공식 페이지 기준으로 모집 티켓은 접속 보상 60장과 출석 보상 360장이 명시돼 있다. 핵심은 출석 보상이 <b>연속이 아닌 누적 15일</b>이라는 점이다. 이벤트 기간이 9월 24일부터 10월 22일까지 29일이므로, 절반 정도만 접속해도 출석 보상을 모두 받을 수 있다.</p>
+                    <p>보상을 한 번에 몰아주면 받고 떠나는 유저가 생기고, 매일 접속을 강요하면 하루만 놓쳐도 손해라는 압박이 생긴다. 트릭컬은 그 사이를 택했다. <b>60회를 즉시 지급해 첫 접속의 만족을 주고, 나머지는 누적 출석으로 나눠</b> 기간 내내 돌아올 이유를 만들면서도 빠진 날에 대한 부담은 줄였다. 그 사이 플레이어는 스토리 완결, 애니메이션 방영, 콘서트를 자연스럽게 함께 겪게 된다.</p>
                     <p>과금 구조도 이 흐름을 막지 않았다. Sensor Tower에 따르면 1주년 당시 이 게임에서 가장 많이 팔린 상품의 평균 가격은 약 5,600원으로, 같은 시기 매출 상위 MMORPG(약 3만 원대)보다 훨씬 낮았다. 무료 보상으로 돌아온 유저가 부담 없이 소액 결제로 넘어갈 수 있는 구조로 볼 수 있고, 실제로 3위 기록은 월초 결제가 몰리는 시점에 나왔다.</p>
                 </div>
 
@@ -936,7 +994,7 @@
                     <ul class="takeaways">
                         <li><b>보상은 열쇠, 재미는 문 뒤에 있어야 한다.</b> 600회 모집이 효과를 낸 건 그 뒤에 애착 가는 캐릭터, 짤 덱, 읽을 결말이 준비돼 있었기 때문이다. 이어질 재미가 없으면 대량 보상은 받고 떠나는 이벤트로 끝난다.</li>
                         <li><b>확정 장치가 무료 보상의 가치를 키운다.</b> 신앙심 마일리지처럼 '반드시 얻는' 구조가 있어야 무료 모집이 막연한 운이 아니라 목표가 있는 수집이 된다.</li>
-                        <li><b>보상의 크기만큼 타이밍이 중요하다.</b> 스토리 완결, 개발진 방송, 애니메이션 공개처럼 감정이 가장 높아지는 시점에 보상을 겹쳐야 복귀와 결제가 함께 일어난다.</li>
+                        <li><b>보상의 크기만큼 타이밍과 나누는 방식이 중요하다.</b> 스토리 완결, 개발진 방송, 애니메이션 공개처럼 감정이 높아지는 시점에 보상을 겹치고, 누적 출석처럼 부담 없는 방식으로 나눠 줘야 기간 내내 유저가 돌아온다.</li>
                     </ul>
                     <div class="qa-note">
                         <span class="tag">QA VIEW</span>
@@ -947,6 +1005,7 @@
                 <footer class="sources">
                     <b>참고 자료</b>
                     <ul>
+                        <li><a href="https://www.trickcal.com/event/3rdanniversary" target="_blank" rel="noopener">트릭컬 리바이브 공식 3주년 이벤트 페이지</a></li>
                         <li><a href="https://www.inews24.com/view/2011286" target="_blank" rel="noopener">아이뉴스24 · 트릭컬 리바이브 국내 구글 매출 3위 (2026.10.02)</a></li>
                         <li><a href="https://www.invenglobal.com/articles/26679/double-celebration-with-anime-release-and-3rd-anniversary-trickcal-revive-ranks-4th-in-google-play-revenue" target="_blank" rel="noopener">Inven Global · 3주년과 애니메이션, 구글 매출 4위 (2026.10.01)</a></li>
                         <li><a href="https://www.invenglobal.com/articles/26539/3rd-1st-anniversary-boost-trickcal-ranks-7th-in-korea-and-3rd-in-japan-on-google-play-revenue" target="_blank" rel="noopener">Inven Global · 시즌 3 완결과 특별 방송, 한국 7위·일본 3위 (2026.09)</a></li>
