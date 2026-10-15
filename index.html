@@ -690,6 +690,40 @@
             border-top: 1px solid var(--line);
         }
 
+        /* ===== 데스크톱: 체크리스트를 오른쪽에 고정 ===== */
+        @media (min-width: 861px) {
+            .layout {
+                display: grid;
+                grid-template-columns: minmax(0, 1fr) 220px;
+                column-gap: 48px;
+            }
+            .sidebar { display: contents; }
+            .profile { grid-column: 1; grid-row: 1; padding-top: 56px; }
+            .content { grid-column: 1; grid-row: 2; padding-top: 44px; }
+            .checklist {
+                grid-column: 2;
+                grid-row: 1 / span 2;
+                position: sticky;
+                top: 56px;
+                align-self: start;
+                margin-top: 56px;
+            }
+        }
+        @media (min-width: 1240px) {
+            .layout {
+                grid-template-columns: 250px minmax(0, 1fr) 220px;
+                max-width: 1440px;
+            }
+            .profile {
+                grid-row: 1 / span 2;
+                position: sticky;
+                top: 0;
+                align-self: start;
+            }
+            .content { grid-column: 2; grid-row: 1 / span 2; padding-top: 56px; }
+            .checklist { grid-column: 3; }
+        }
+
         /* ===== 모바일 ===== */
         @media (max-width: 860px) {
             .layout { flex-direction: column; gap: 0; padding: 0 20px; }
