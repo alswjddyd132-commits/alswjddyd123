@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>니케 4주년 순위 반등 분석</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&family=Noto+Serif+KR:wght@700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f6f4ef; --paper:#fffdf8; --ink:#1d1b18; --muted:#6b655c; --line:#e3ddd1;
+  --accent:#c2412d; --accent-soft:#f6e3de; --up:#1f7a4d; --down:#a33;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#141311; --paper:#1c1b18; --ink:#ece7dd; --muted:#a39c90; --line:#33302a;
+    --accent:#ff7a5c; --accent-soft:#3a221c; --up:#5cc28f; --down:#ff8a8a;
+  }
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans KR",system-ui,sans-serif;line-height:1.75;font-size:16px}
+.wrap{max-width:820px;margin:0 auto;padding:0 16px}
+header{border-bottom:1px solid var(--line);background:var(--paper)}
+header .wrap{padding-top:56px;padding-bottom:40px}
+.kicker{font-size:13px;letter-spacing:.12em;color:var(--accent);font-weight:700}
+h1{font-family:"Noto Serif KR",serif;font-weight:900;font-size:clamp(28px,6vw,44px);line-height:1.25;margin:10px 0 14px}
+.sub{color:var(--muted);margin:0}
+.meta{margin-top:20px;font-size:13px;color:var(--muted)}
+h2{font-family:"Noto Serif KR",serif;font-size:24px;margin:56px 0 12px;padding-top:8px;border-top:2px solid var(--ink)}
+h2 .n{color:var(--accent);margin-right:8px}
+h3{font-size:17px;margin:28px 0 6px}
+p{margin:10px 0}
+.summary{background:var(--paper);border:1px solid var(--line);border-left:4px solid var(--accent);padding:20px 22px;margin:36px 0 0;border-radius:4px}
+.summary ol{margin:8px 0 0;padding-left:20px}
+.summary li{margin:6px 0}
+.note{background:var(--accent-soft);padding:14px 18px;border-radius:4px;font-size:15px;margin:18px 0}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin:20px 0}
+.stat{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:16px}
+.stat .v{font-size:30px;font-weight:900;line-height:1.1}
+.stat .v small{font-size:15px;font-weight:500;color:var(--muted)}
+.stat .l{font-size:13px;color:var(--muted);margin-top:6px}
+.tablewrap{overflow-x:auto;margin:16px 0}
+table{width:100%;border-collapse:collapse;font-size:15px;background:var(--paper)}
+th,td{padding:10px 12px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{font-size:13px;color:var(--muted);font-weight:500;background:transparent}
+td.r{font-weight:700;white-space:nowrap}
+.hi{color:var(--accent)}
+.factor{display:grid;grid-template-columns:44px 1fr;gap:14px;margin:22px 0}
+.factor .ix{font-family:"Noto Serif KR",serif;font-weight:900;font-size:28px;color:var(--accent);line-height:1}
+.factor h3{margin:0 0 4px}
+ul.tight{margin:6px 0;padding-left:20px}
+ul.tight li{margin:3px 0}
+.timeline{border-left:2px solid var(--line);margin:18px 0 0 6px;padding-left:20px}
+.timeline .ev{position:relative;margin:0 0 18px}
+.timeline .ev::before{content:"";position:absolute;left:-27px;top:8px;width:12px;height:12px;border-radius:50%;background:var(--paper);border:2px solid var(--accent)}
+.timeline .d{font-size:13px;color:var(--accent);font-weight:700}
+.sources{font-size:14px;color:var(--muted)}
+.sources a{color:var(--ink)}
+.sources li{margin:4px 0;word-break:break-all}
+footer{margin:64px 0 0;padding:24px 0 48px;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div class="kicker">게임분석 보고서</div>
+    <h1>승리의 여신: 니케는 왜 4주년에<br>매출 최상위권으로 돌아왔나</h1>
+    <p class="sub">2026년 10월 29일 4주년 업데이트 전후 순위 변화와 그 원인 분석</p>
+    <div class="meta">작성일 2026.11.05 · 자료: 모바일인덱스 인용 보도, 순위 집계 사이트, 공식 발표 및 게임 언론 기사</div>
+  </div>
+</header>
+
+<main class="wrap">
+
+<section class="summary">
+  <strong>핵심 요약</strong>
+  <ol>
+    <li><b>반등의 직접 원인은 10월 29일 4주년 대규모 업데이트</b>다. 신규 SSR 3종(특히 메인 히로인 '마리안: 퀸'), 메인 스토리 49·50장 완결, 한정 코스튬 가챠가 한꺼번에 투입됐다.</li>
+    <li><b>최대 230~259회 상당의 무료 모집과 무료 SSR 배포</b>가 휴면 이용자를 복귀시켰고, 복귀한 이용자가 유료 픽업·패키지로 소비를 이어가며 매출이 급증했다.</li>
+    <li><b>서울·뉴욕·도쿄 옥외광고 등 역대 최대 규모의 글로벌 캠페인</b>이 관심을 끌어올렸다.</li>
+    <li>이는 니케 특유의 <b>'업데이트 직후 급등 → 비시즌 하락' 패턴</b>의 반복이다. 3주년, 3.5주년, 여름 업데이트 때도 같은 흐름이 나타났다.</li>
+  </ol>
+</section>
+
+<h2><span class="n">01</span>순위는 실제로 얼마나 올랐나</h2>
+
+<div class="stats">
+  <div class="stat"><div class="v hi">1<small>위</small></div><div class="l">한국 앱스토어 매출 (10/29 업데이트 당일)</div></div>
+  <div class="stat"><div class="v">3<small>위</small></div><div class="l">한국 구글플레이 매출 (11/2)</div></div>
+  <div class="stat"><div class="v">1<small>위</small></div><div class="l">일본 구글플레이 매출 (11/2)</div></div>
+  <div class="stat"><div class="v">5<small>위</small></div><div class="l">대만 구글플레이 매출 (11/2)</div></div>
+</div>
+
+<div class="tablewrap">
+<table>
+  <thead><tr><th>시점</th><th>시장 · 마켓</th><th>매출 순위</th><th>출처</th></tr></thead>
+  <tbody>
+    <tr><td>9/22 (업데이트 전)</td><td>한국 앱스토어</td><td class="r">43위</td><td>mgrank 추정 집계</td></tr>
+    <tr><td>9/22 (업데이트 전)</td><td>한국 구글플레이</td><td class="r">11위</td><td>mgrank 추정 집계</td></tr>
+    <tr><td>9/22 (업데이트 전)</td><td>미국 구글플레이</td><td class="r">35위</td><td>mgrank 추정 집계</td></tr>
+    <tr><td>10/29 (업데이트 당일)</td><td>한국 앱스토어</td><td class="r hi">1위</td><td>ZDNet Korea(모바일인덱스)</td></tr>
+    <tr><td>10/29 (업데이트 당일)</td><td>일본 / 대만 앱스토어</td><td class="r">2위 / 1~2위</td><td>ZDNet Korea, 플레이포럼 (대만은 보도별 상이)</td></tr>
+    <tr><td>10/26~11/1 주간</td><td>한국 구글플레이</td><td class="r">4위</td><td>베타뉴스 주간 순위</td></tr>
+    <tr><td>11/2</td><td>한국 / 일본 / 대만 구글플레이</td><td class="r">3위 / <span class="hi">1위</span> / 5위</td><td>ZDNet Korea, 테크M</td></tr>
+  </tbody>
+</table>
+</div>
+
+<div class="note">
+  <b>확인 사항:</b> 과제의 전제인 "35위 → 5위"는 큰 흐름(중하위권 → 최상위권)과 일치하지만, 업데이트 직전 한국 순위가 정확히 35위였다는 공개 자료는 찾지 못했다. 공개 자료상 업데이트 한 달여 전 한국 앱스토어는 40위권, 미국 구글플레이는 35위였으며, 업데이트 이후 한국 구글플레이는 3~5위, 앱스토어는 1위를 기록했다. 따라서 본 보고서는 "업데이트 전 중하위권에서 업데이트 후 TOP 5권으로 급등"한 현상의 원인을 분석한다.
+</div>
+
+<h2><span class="n">02</span>무슨 일이 있었나: 4주년 업데이트 타임라인</h2>
+
+<div class="timeline">
+  <div class="ev"><div class="d">10월 23~28일</div>4주년 카운트다운 이미지를 매일 공개하며 기대감을 조성. 10월 24일 공식 방송에서 업데이트 세부 내용 공개.</div>
+  <div class="ev"><div class="d">10월 29일</div>4주년 대규모 업데이트 적용. 당일 한국 앱스토어 매출 1위.</div>
+  <div class="ev"><div class="d">10월 말~11월 초</div>서울 용산, 뉴욕 타임스퀘어, 도쿄 번화가에서 대형 옥외광고 및 오프라인 행사 진행.</div>
+  <div class="ev"><div class="d">11월 2일</div>구글플레이 기준 한국 3위, 일본 1위, 대만 5위. 주말이 지나도 상위권 유지.</div>
+</div>
+
+<h3>업데이트 주요 구성</h3>
+<div class="tablewrap">
+<table>
+  <thead><tr><th>구분</th><th>내용</th></tr></thead>
+  <tbody>
+    <tr><td>신규 SSR 3종</td><td>마리안: 퀸(유료 픽업, 화력 버스트 III 딜러), 홍련: 신살(유료 픽업), 라푼젤: 생츄어리(무료 배포 서포터, 최대 4장)</td></tr>
+    <tr><td>메인 스토리</td><td>49장·50장 추가. 제3차 지표 탈환전과 '지하 방주' 스토리의 완결</td></tr>
+    <tr><td>이벤트 스토리</td><td>'MARIA-n': 마리안의 과거를 다루는 풀보이스 스토리, 선택지형 미니게임 포함</td></tr>
+    <tr><td>한정 코스튬 4종</td><td>마리안: 퀸, 스노우 화이트: 헤비암즈(가챠) / 나유타, 네온(패스 보상)</td></tr>
+    <tr><td>무료 혜택</td><td>최대 230~259회 상당 무료 모집(집계 기준에 따라 차이), 매일 무료 특수 모집, 14일 출석 보상</td></tr>
+    <tr><td>편의성·콜라보</td><td>'싱크로 부스트' 등 성장 편의 개선, 스텔라 블레이드 음악 콜라보</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h2><span class="n">03</span>순위가 오른 이유 분석</h2>
+
+<div class="factor">
+  <div class="ix">1</div>
+  <div>
+    <h3>'마리안'이라는 상징적 캐릭터의 신규 출시</h3>
+    <p>마리안은 게임 시작부터 스토리의 중심에 있던 캐릭터로, 오래된 이용자일수록 애착이 크다. 4주년 신규 캐릭터를 그녀의 새 모습인 '마리안: 퀸'으로 내놓고, 성능도 강력하게 설계했다는 평가를 받는다. <b>서사적 애착과 성능이라는 두 가지 구매 동기</b>를 동시에 자극한 셈이다. 픽업 기간에 맞춰 뽑으려는 수요가 몰리며 단기 매출이 집중됐다.</p>
+  </div>
+</div>
+
+<div class="factor">
+  <div class="ix">2</div>
+  <div>
+    <h3>메인 스토리의 큰 전환점</h3>
+    <p>49·50장은 오래 이어진 '지하 방주' 이야기를 마무리하는 결전 챕터다. 업계 보도와 퍼블리셔는 <b>서사의 전환점과 신규 캐릭터 등장</b>을 반등의 핵심 배경으로 꼽았다. 스토리 결말을 보려는 이용자가 복귀하고, 그 이야기 속 캐릭터를 갖고 싶어지는 구조다.</p>
+  </div>
+</div>
+
+<div class="factor">
+  <div class="ix">3</div>
+  <div>
+    <h3>대규모 무료 보상 → 복귀 → 과금 전환</h3>
+    <p>최대 259회 상당의 무료 모집과 무료 SSR 배포는 휴면 이용자를 끌어오는 장치다. 무료로 받은 재화로 시작한 뒤, 원하는 픽업 캐릭터를 확정 획득하거나 코스튬을 얻기 위해 <b>추가 결제로 이어지는 흐름</b>이 매출 급등으로 연결된다. 무료 보상이 많을수록 오히려 매출이 늘어나는 이유다.</p>
+  </div>
+</div>
+
+<div class="factor">
+  <div class="ix">4</div>
+  <div>
+    <h3>코스튬 가챠 등 매출원 다양화</h3>
+    <p>캐릭터 픽업 외에 전용 전투 이펙트가 붙은 한정 코스튬 가챠, 유료 패스가 함께 열렸다. 이미 캐릭터를 보유한 고과금 이용자에게도 <b>추가 지출 이유</b>를 제공해 매출 상한선을 높였다.</p>
+  </div>
+</div>
+
+<div class="factor">
+  <div class="ix">5</div>
+  <div>
+    <h3>역대 최대 규모의 글로벌 마케팅</h3>
+    <p>카운트다운 → 공식 방송 → 업데이트 → 서울·뉴욕·도쿄 옥외광고와 오프라인 행사로 이어지는 단계적 캠페인이 관심도를 정점에 맞췄다. 일본에서는 4주년 라이브 방송 참가 신청이 역대 최대였다는 이야기도 있다.</p>
+  </div>
+</div>
+
+<div class="factor">
+  <div class="ix">6</div>
+  <div>
+    <h3>업데이트 전 순위가 낮았던 이유: 시즌 사이의 공백</h3>
+    <p>(분석) 니케는 대형 업데이트 사이 기간에 매출이 빠지는 구조다. 9월 하순 한국 앱스토어 40위권은 여름 업데이트 효과가 끝난 비시즌 구간이었다. 즉 이번 급등은 '갑작스러운 인기'라기보다 <b>주기적으로 반복되는 업데이트 사이클의 정점</b>으로 보는 것이 정확하다.</p>
+  </div>
+</div>
+
+<h2><span class="n">04</span>반복되는 패턴: 업데이트마다 역주행</h2>
+<div class="tablewrap">
+<table>
+  <thead><tr><th>업데이트</th><th>주요 성과</th></tr></thead>
+  <tbody>
+    <tr><td>3주년 (2025.11)</td><td>국내 매출 1위까지 상승, 일본 앱스토어 2위</td></tr>
+    <tr><td>3.5주년 (2026.04)</td><td>한국 앱스토어 1위, 한·일 구글플레이 1위. 출시 초기 이후 가장 강한 매출 흐름</td></tr>
+    <tr><td>여름 업데이트 (2026.07)</td><td>일본 구글플레이 1위, 한·일 차트 역주행</td></tr>
+    <tr><td>4주년 (2026.10)</td><td>한국 앱스토어 1위, 일본 구글플레이 1위, 한국 구글플레이 3위</td></tr>
+  </tbody>
+</table>
+</div>
+<p>과거 센서타워 분석에서도 1.5주년·2주년 이벤트 때 일 매출이 이벤트 전일 대비 144~191% 증가한 기록이 있다. 니케의 매출은 <b>주년·반주년·시즌 이벤트에 맞춰 크게 출렁이는 '이벤트 주도형'</b>이며, 4주년 반등도 이 구조의 연장선이다.</p>
+
+<h2><span class="n">05</span>시사점과 리스크</h2>
+<h3>시사점</h3>
+<ul class="tight">
+  <li>출시 4년 차에도 대형 업데이트로 최상위권 복귀가 가능하다는 점은 장기 서비스 IP로서의 경쟁력을 보여준다.</li>
+  <li>쌓아 온 서사와 캐릭터 애착이 '주년 업데이트 = 복귀 계기'라는 공식을 만든다.</li>
+  <li>니케는 시프트업 매출의 대부분을 차지하는 캐시카우로, 2026년 2분기 시프트업 매출 557억 원 중 432억 원이 니케에서 나왔다.</li>
+</ul>
+<h3>리스크</h3>
+<ul class="tight">
+  <li><b>지속성:</b> 패턴상 업데이트 효과는 수 주 내 약해진다. 다음 반등 계기는 1월 1일 신년 업데이트로 예고돼 있다.</li>
+  <li><b>신뢰 문제:</b> 2026년 부정 프로그램 사용자 처벌 논란이 매끄럽게 정리되지 않아 이용자 불신이 남아 있다는 지적이 있다.</li>
+  <li><b>국내 경쟁:</b> 한국 구글플레이 상위권은 MMORPG가 다수 차지하고 있어 1위 유지는 쉽지 않다.</li>
+</ul>
+
+<h2><span class="n">06</span>결론</h2>
+<p>니케의 10월 말 순위 급등은 <b>4주년 업데이트라는 단일 이벤트에 여러 매출 동력이 집중된 결과</b>다. 메인 히로인 마리안의 한정 출시와 스토리 결전이 오랜 이용자의 애착을 자극했고, 대규모 무료 보상이 복귀를 이끌었으며, 코스튬 가챠와 글로벌 마케팅이 매출 폭을 키웠다. 업데이트 전 순위가 낮았던 것은 비시즌 하락 때문이며, 이번 반등은 니케가 3주년부터 반복해 온 '업데이트 사이클'의 정점으로 해석할 수 있다.</p>
+
+<h2 style="font-size:18px">출처</h2>
+<ol class="sources">
+  <li><a href="https://zdnet.co.kr/view/?no=20261102094333">ZDNet Korea, '승리의 여신: 니케', 4주년 효과로 매출 순위 급등 (2026.11.02)</a></li>
+  <li><a href="https://www.techm.kr/news/articleView.html?idxno=156758">테크M, 니케 흥행 질주…日 구글 매출 1위 달성 (2026.11.02)</a></li>
+  <li><a href="https://www.betanews.net/article/view/beta202611020005">베타뉴스, [주간 모바일 순위] 4주년 승리의 여신: 니케 (2026.11.02)</a></li>
+  <li><a href="https://gamefocus.co.kr/detail.php?number=180225">게임포커스, 서비스 4주년 '니케' 매출 순위 대폭 상승… 구글 플레이 5위</a></li>
+  <li><a href="https://www.playforum.net/news/articleView.html?idxno=635749">플레이포럼, 4주년 '승리의 여신: 니케' 일본 구글 매출 정상 탈환</a></li>
+  <li><a href="https://www.newstap.co.kr/news/articleView.html?idxno=337012">뉴스탭, 니케 4주년 글로벌 캠페인…한·일 앱마켓 매출 1위</a></li>
+  <li><a href="https://www.inven.co.kr/webzine/news/?news=322864">인벤, 승리의 여신: 니케, 세계 도심서 4주년 축제</a></li>
+  <li><a href="https://www.xportsnews.com/article/2212863">엑스포츠뉴스, 니케 4주년 대규모 업데이트</a></li>
+  <li><a href="https://www.invenglobal.com/articles/27855/goddess-of-victory-nikke-launches-4th-anniversary-update">Inven Global, Nikke Launches 4th Anniversary Update</a></li>
+  <li><a href="https://www.invenglobal.com/articles/27659/up-to-230-pulls-goddess-of-victory-nikke-4th-anniversary-special-broadcast-final-battle">Inven Global, 4th Anniversary Special Broadcast</a></li>
+  <li><a href="https://www.gamemeca.com/en/view.php?gid=1782587">게임메카, 마리안: 퀸 성능 분석</a></li>
+  <li><a href="https://mgrank.com/ko/game/com.proximabeta.nikke">mgrank, 승리의 여신: 니케 매출 순위 (2026.09.22 기준)</a></li>
+  <li><a href="https://www.koreadaily.com/article/20260427014915621">OSEN/코리아데일리, 3.5주년 업데이트 역주행</a></li>
+  <li><a href="https://www.youthdaily.co.kr/news/article.html?no=219253">청년일보, 니케 3.5주년 흥행에 日·韓 매출 1위</a></li>
+  <li><a href="https://www.thisisgame.com/articles/205512">디스이즈게임, 센서타워 니케 매출 분석</a></li>
+  <li><a href="https://namu.moe/w/MARIA-n">나무위키, MARIA-n</a></li>
+</ol>
+
+<footer>본 보고서의 순위는 보도 시점 기준이며, 순위 집계 사이트 수치는 추정값을 포함한다.</footer>
+</main>
+</body>
+</html>
