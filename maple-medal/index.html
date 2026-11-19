@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>신뢰의 훈장 기획서</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=IBM+Plex+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+/* Layout idea: 세로 스크롤 스토리. 섹션마다 큰 그래픽 1개 + 짧은 개요 3~4줄 */
+:root{
+  --bg:#f4f6fa; --surface:#ffffff; --ink:#18213a; --muted:#5d6782;
+  --line:#dde2ec; --accent:#f07a1a; --accent-soft:#fde7d4;
+  --trust:#1f9d8a; --trust-soft:#d6f1ec; --warn:#d6453d;
+  --display:"Do Hyeon","Noto Sans KR",sans-serif;
+  --body:"IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0f1424; --surface:#182036; --ink:#e9edf7; --muted:#9aa4c0;
+    --line:#2a3452; --accent:#ff9440; --accent-soft:#3b2a1e;
+    --trust:#3cc7b1; --trust-soft:#173a37; --warn:#ff6b62; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0f1424; --surface:#182036; --ink:#e9edf7; --muted:#9aa4c0;
+  --line:#2a3452; --accent:#ff9440; --accent-soft:#3b2a1e;
+  --trust:#3cc7b1; --trust-soft:#173a37; --warn:#ff6b62; color-scheme:dark;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);line-height:1.6;font-size:16px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+header.hero{padding:56px 0 32px;border-bottom:1px solid var(--line)}
+.eyebrow{font-size:13px;letter-spacing:.08em;color:var(--accent);font-weight:700}
+h1{font-family:var(--display);font-weight:400;font-size:clamp(40px,7vw,72px);line-height:1.05;margin:8px 0 12px;text-wrap:balance}
+h1 em{font-style:normal;color:var(--accent)}
+.sub{color:var(--muted);font-size:18px;margin:0}
+.tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:28px}
+.tile{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px}
+.tile b{display:block;font-family:var(--display);font-weight:400;font-size:34px;line-height:1.1;font-variant-numeric:tabular-nums}
+.tile span{font-size:13px;color:var(--muted)}
+section{padding:48px 0;border-bottom:1px solid var(--line)}
+.sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:20px}
+.num{font-family:var(--display);color:var(--accent);font-size:28px}
+h2{font-family:var(--display);font-weight:400;font-size:32px;margin:0;text-wrap:balance}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:20px}
+.card h3{margin:0 0 10px;font-size:17px}
+ul.pts{margin:0;padding-left:18px}
+ul.pts li{margin:4px 0}
+.chart-box{position:relative;height:280px}
+.cap{font-size:12px;color:var(--muted);margin-top:8px}
+.tag{display:inline-block;font-size:11px;font-weight:700;padding:2px 8px;border-radius:999px;background:var(--accent-soft);color:var(--accent);vertical-align:middle}
+.tag.t{background:var(--trust-soft);color:var(--trust)}
+/* timeline */
+.tl{display:grid;grid-template-columns:repeat(6,1fr);gap:0;position:relative;margin-top:8px}
+.tl::before{content:"";position:absolute;left:0;right:0;top:15px;height:3px;background:var(--line)}
+.tl .ev{position:relative;padding:0 8px;text-align:center}
+.tl .dot{width:18px;height:18px;border-radius:50%;margin:6px auto 10px;background:var(--surface);border:3px solid var(--muted);position:relative}
+.tl .ev.bad .dot{border-color:var(--warn);background:var(--warn)}
+.tl .ev.fix .dot{border-color:var(--trust);background:var(--trust)}
+.tl .d{font-weight:700;font-size:13px;font-variant-numeric:tabular-nums}
+.tl .t{font-size:13px;color:var(--muted)}
+.insight{margin-top:24px;padding:18px 20px;border-left:5px solid var(--accent);background:var(--surface);border-radius:0 12px 12px 0;font-size:18px}
+/* principles */
+.pr{text-align:center}
+.pr svg{width:64px;height:64px;margin-bottom:8px}
+.pr b{display:block;font-size:18px}
+/* item card */
+.item{display:grid;grid-template-columns:200px 1fr;gap:24px;align-items:center}
+.medal{width:180px;height:180px;margin:auto}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th,td{text-align:left;padding:9px 10px;border-bottom:1px solid var(--line)}
+th{color:var(--muted);font-weight:500;width:34%}
+td.n,th.n{text-align:right;font-variant-numeric:tabular-nums}
+/* mock UI */
+.phone{max-width:340px;margin:auto;background:var(--ink);border-radius:32px;padding:14px}
+.screen{background:#1d2540;border-radius:22px;padding:18px;color:#eef1f8;font-size:13px}
+.screen h4{margin:0 0 12px;font-size:15px;display:flex;justify-content:space-between}
+.gauge{height:14px;border-radius:999px;background:#33406a;overflow:hidden;margin:6px 0 4px}
+.gauge i{display:block;height:100%;width:68.5%;background:linear-gradient(90deg,#ff9440,#ffc04d)}
+.row{display:flex;justify-content:space-between;font-variant-numeric:tabular-nums}
+.cmp{margin:14px 0 4px}
+.bar{height:8px;border-radius:4px;margin:3px 0}
+.bar.p{background:#7d8bb5}
+.bar.m{background:#3cc7b1}
+.btn{display:block;text-align:center;margin-top:14px;padding:10px;border-radius:12px;background:#ff9440;color:#1d2540;font-weight:700}
+.legend{display:flex;gap:12px;font-size:11px;color:#b9c2dc;margin-top:6px}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:4px;vertical-align:-1px}
+/* price cards */
+.price{position:relative}
+.price .p{font-family:var(--display);font-size:30px;font-variant-numeric:tabular-nums}
+.price.hot{border:2px solid var(--accent)}
+/* roadmap */
+.road{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
+.step{background:var(--surface);border:1px solid var(--line);border-top:4px solid var(--trust);border-radius:10px;padding:14px}
+.step b{display:block;font-family:var(--display);font-size:22px;font-weight:400;color:var(--trust)}
+.step span{font-size:14px}
+/* risk */
+.risk td:first-child{width:28%;font-weight:700}
+.lvl{display:inline-block;width:56px;text-align:center;font-size:11px;font-weight:700;border-radius:999px;padding:2px 0;color:#fff}
+.lvl.h{background:var(--warn)} .lvl.m{background:var(--accent)} .lvl.l{background:var(--trust)}
+footer{padding:32px 0 56px;font-size:13px;color:var(--muted)}
+footer a{color:var(--muted)}
+footer ol{padding-left:18px}
+@media (max-width:820px){
+  .tiles{grid-template-columns:repeat(2,1fr)}
+  .grid2,.grid3,.item{grid-template-columns:1fr}
+  .road{grid-template-columns:1fr 1fr}
+  .tl{grid-template-columns:1fr 1fr 1fr;row-gap:20px}
+  .tl::before{display:none}
+}
+@media (max-width:440px){ .road{grid-template-columns:1fr} .tl{grid-template-columns:1fr 1fr} }
+@media (prefers-reduced-motion: reduce){ *{animation:none!important;transition:none!important} }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">메이플 키우기 · 1주년 인앱 상품 기획서</div>
+    <h1>보이는 확률,<br><em>신뢰의 훈장</em></h1>
+    <p class="sub">확률 논란을 투명성 상품으로 바꾸는 기획</p>
+    <div class="tiles">
+      <div class="tile"><b>45일</b><span>누적 매출 1억 달러 도달</span></div>
+      <div class="tile"><b>67%</b><span>한국 매출 비중</span></div>
+      <div class="tile"><b>300만</b><span>45일 누적 다운로드</span></div>
+      <div class="tile"><b>7회</b><span>일평균 접속 세션</span></div>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+<!-- 01 게임 선정 -->
+<section id="game">
+  <div class="sec-head"><span class="num">01</span><h2>왜 메이플 키우기인가</h2></div>
+  <div class="grid2">
+    <div class="card">
+      <h3>출시 45일 매출 비교 <span class="cap">(백만 달러)</span></h3>
+      <div class="chart-box"><canvas id="c-rev"></canvas></div>
+      <div class="cap">출처: 센서타워, 2025.12</div>
+    </div>
+    <div class="card">
+      <h3>국가별 매출 비중</h3>
+      <div class="chart-box"><canvas id="c-country"></canvas></div>
+      <div class="cap">출처: 센서타워, 출시 45일 기준</div>
+    </div>
+  </div>
+  <div class="grid3" style="margin-top:16px">
+    <div class="card"><h3>흥행</h3><ul class="pts"><li>출시 9일 만에 양대 마켓 1위</li><li>한 달간 1위 유지</li></ul></div>
+    <div class="card"><h3>수익 구조</h3><ul class="pts"><li>성장 재료가 핵심 매출원</li><li>인앱 결제 기획에 적합</li></ul></div>
+    <div class="card"><h3>시점</h3><ul class="pts"><li>2026.11.06 1주년</li><li>신뢰 회복 메시지 적기</li></ul></div>
+  </div>
+</section>
+
+<!-- 02 이슈 -->
+<section id="issue">
+  <div class="sec-head"><span class="num">02</span><h2>모티브: 어빌리티 확률 논란</h2></div>
+  <div class="card">
+    <div class="tl">
+      <div class="ev"><div class="dot"></div><div class="d">2025.11.06</div><div class="t">글로벌 출시</div></div>
+      <div class="ev bad"><div class="dot"></div><div class="d">11.06~12.02</div><div class="t">최대 수치 미등장 오류</div></div>
+      <div class="ev bad"><div class="dot"></div><div class="d">12.02</div><div class="t">수정했지만 공지 없음</div></div>
+      <div class="ev bad"><div class="dot"></div><div class="d">2026.01.26</div><div class="t">전말 공개, 여론 폭발</div></div>
+      <div class="ev fix"><div class="dot"></div><div class="d">01.28</div><div class="t">출시 후 결제 전액 환불</div></div>
+      <div class="ev fix"><div class="dot"></div><div class="d">2026.02</div><div class="t">집단분쟁조정 제도 시행</div></div>
+    </div>
+  </div>
+  <div class="grid3" style="margin-top:16px">
+    <div class="card"><h3>무엇이 문제였나</h3><ul class="pts"><li>유료 재화: 명예의 훈장</li><li>최대 옵션이 안내대로 안 나옴</li><li>원인: 조건식 ‘이하’를 ‘미만’으로 오설정</li><li>공격 속도 표기도 실제와 다름</li></ul></div>
+    <div class="card"><h3>왜 커졌나</h3><ul class="pts"><li>유저 문의에 형식적 답변</li><li>수정 사실 약 두 달 미고지</li></ul></div>
+    <div class="card"><h3>업계 흐름</h3><ul class="pts"><li>확률 표시 규제 강화</li><li>징벌적 손해배상 최대 3배</li></ul></div>
+  </div>
+  <div class="insight">핵심 문제는 확률이 <b>보이지 않았다는 것</b>.</div>
+</section>
+
+<!-- 03 방향 -->
+<section id="direction">
+  <div class="sec-head"><span class="num">03</span><h2>기획 방향: 세 가지 원칙</h2></div>
+  <div class="grid3">
+    <div class="card pr">
+      <svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="28" fill="var(--trust-soft)"/><ellipse cx="32" cy="32" rx="18" ry="11" fill="none" stroke="var(--trust)" stroke-width="4"/><circle cx="32" cy="32" r="5" fill="var(--trust)"/></svg>
+      <b>보이는 확률</b><span>내 결과와 공시 확률 비교</span>
+    </div>
+    <div class="card pr">
+      <svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="28" fill="var(--accent-soft)"/><rect x="16" y="38" width="8" height="10" fill="var(--accent)"/><rect x="28" y="28" width="8" height="20" fill="var(--accent)"/><rect x="40" y="16" width="8" height="32" fill="var(--accent)"/><line x1="12" y1="16" x2="52" y2="16" stroke="var(--accent)" stroke-width="3" stroke-dasharray="4 3"/></svg>
+      <b>끝이 있는 확률</b><span>천장 도달 시 최대치 확정</span>
+    </div>
+    <div class="card pr">
+      <svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="28" fill="var(--trust-soft)"/><rect x="20" y="16" width="24" height="32" rx="3" fill="none" stroke="var(--trust)" stroke-width="4"/><line x1="26" y1="26" x2="38" y2="26" stroke="var(--trust)" stroke-width="3"/><line x1="26" y1="33" x2="38" y2="33" stroke="var(--trust)" stroke-width="3"/><line x1="26" y1="40" x2="34" y2="40" stroke="var(--trust)" stroke-width="3"/></svg>
+      <b>사라지지 않는 기록</b><span>천장 카운트 영구 이월</span>
+    </div>
+  </div>
+  <div class="card" style="margin-top:16px">
+    <h3>획득 방식 비교 <span class="cap">(정성 평가, 5점 만점)</span></h3>
+    <div class="chart-box"><canvas id="c-type"></canvas></div>
+    <div class="cap">하이브리드: 매출 구조 유지 + 신뢰 확보</div>
+  </div>
+</section>
+
+<!-- 04 상품 -->
+<section id="item">
+  <div class="sec-head"><span class="num">04</span><h2>상품 상세: 신뢰의 훈장</h2></div>
+  <div class="card item">
+    <svg class="medal" viewBox="0 0 180 180" role="img" aria-label="신뢰의 훈장 아이콘 시안">
+      <path d="M62 8 L90 70 L118 8 Z" fill="var(--trust)"/>
+      <path d="M62 8 L76 8 L90 40 L104 8 L118 8 L90 70 Z" fill="var(--trust-soft)" opacity=".5"/>
+      <circle cx="90" cy="112" r="58" fill="var(--accent)"/>
+      <circle cx="90" cy="112" r="46" fill="none" stroke="#fff" stroke-width="3" stroke-dasharray="6 5" opacity=".8"/>
+      <path d="M90 78 L99 101 L124 102 L104 117 L111 141 L90 127 L69 141 L76 117 L56 102 L81 101 Z" fill="#fff"/>
+      <rect x="62" y="150" width="56" height="18" rx="9" fill="var(--ink)"/>
+      <text x="90" y="163" text-anchor="middle" font-size="11" font-family="IBM Plex Sans KR,sans-serif" fill="#fff">137 / 200</text>
+    </svg>
+    <table>
+      <tr><th>기능</th><td>어빌리티 옵션 무작위 재설정</td></tr>
+      <tr><th>천장</th><td>200회 사용 시 옵션 1줄 최대치 확정 <span class="tag">가안</span></td></tr>
+      <tr><th>기록</th><td>내 결과 · 공시 확률 · 서버 통계 표시</td></tr>
+      <tr><th>이월</th><td>천장 카운트 기간 제한 없음</td></tr>
+      <tr><th>귀속</th><td>계정 귀속, 거래 불가</td></tr>
+      <tr><th>확률 변경</th><td>7일 전 사전 공지 의무화</td></tr>
+    </table>
+  </div>
+
+  <div class="grid2" style="margin-top:16px">
+    <div class="card">
+      <h3>최대 수치 도달 누적 확률</h3>
+      <div class="chart-box"><canvas id="c-ceil"></canvas></div>
+      <div class="cap">회당 1%는 가정값. 실제 공시 확률로 교체 필요</div>
+    </div>
+    <div class="card">
+      <h3>천장이 바꾸는 것</h3>
+      <ul class="pts">
+        <li>천장 없으면 13.4%는 200회 초과</li>
+        <li>천장 있으면 최악도 200회</li>
+        <li>최대 비용이 미리 보임</li>
+        <li>불운 리스크를 회사가 부담</li>
+      </ul>
+      <table style="margin-top:14px">
+        <tr><th>구분</th><th class="n">천장 없음</th><th class="n">천장 200</th></tr>
+        <tr><td>평균 시도</td><td class="n">100회</td><td class="n">87회</td></tr>
+        <tr><td>200회 초과 확률</td><td class="n">13.4%</td><td class="n">0%</td></tr>
+        <tr><td>최악의 경우</td><td class="n">상한 없음</td><td class="n">200회</td></tr>
+      </table>
+      <div class="cap">계산값. 회당 1%, 독립 시행 가정</div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 UI -->
+<section id="ui">
+  <div class="sec-head"><span class="num">05</span><h2>확률 기록 화면 시안</h2></div>
+  <div class="grid2">
+    <div class="phone" aria-label="확률 기록 화면 예시">
+      <div class="screen">
+        <h4><span>어빌리티 기록</span><span style="color:#3cc7b1">오차 범위 정상</span></h4>
+        <div class="row"><span>천장 진행도</span><span>137 / 200</span></div>
+        <div class="gauge"><i></i></div>
+        <div class="row" style="color:#b9c2dc"><span>최대치 확정까지</span><span>63회</span></div>
+
+        <div class="cmp row"><span>최대 수치 등장</span><span>0.73% · 1.00%</span></div>
+        <div class="bar m" style="width:73%"></div><div class="bar p" style="width:100%"></div>
+        <div class="cmp row"><span>목표 옵션 등장</span><span>2.19% · 2.00%</span></div>
+        <div class="bar m" style="width:100%"></div><div class="bar p" style="width:91%"></div>
+        <div class="cmp row"><span>상위 30% 수치</span><span>9.6% · 10.0%</span></div>
+        <div class="bar m" style="width:96%"></div><div class="bar p" style="width:100%"></div>
+
+        <div class="legend"><span><i style="background:#3cc7b1"></i>내 기록</span><span><i style="background:#7d8bb5"></i>공시 확률</span></div>
+        <div class="row" style="margin-top:12px;color:#b9c2dc"><span>서버 누적 사용</span><span>1,284,551회</span></div>
+        <span class="btn">훈장 사용하기</span>
+      </div>
+    </div>
+    <div class="card">
+      <h3>화면 구성 원칙</h3>
+      <ul class="pts">
+        <li>천장 게이지는 항상 상단 고정</li>
+        <li>내 기록과 공시 확률 나란히</li>
+        <li>서버 통계 매주 자동 갱신</li>
+        <li>오차가 크면 자동 점검 알림</li>
+        <li>개인 사용 기록 전체 열람</li>
+      </ul>
+      <p class="cap" style="margin-top:14px">화면의 수치는 모두 예시값입니다.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 06 판매 -->
+<section id="price">
+  <div class="sec-head"><span class="num">06</span><h2>판매 구성 <span class="tag">가안</span></h2></div>
+  <div class="grid3">
+    <div class="card price"><h3>소량 묶음</h3><div class="p">₩5,500</div><ul class="pts"><li>훈장 10개</li><li>상시 판매</li></ul></div>
+    <div class="card price"><h3>중량 묶음</h3><div class="p">₩55,000</div><ul class="pts"><li>훈장 120개 (+20%)</li><li>상시 판매</li></ul></div>
+    <div class="card price hot"><h3>1주년 한정 <span class="tag">추천</span></h3><div class="p">₩99,000</div><ul class="pts"><li>훈장 300개</li><li>주 1회 구매 한도</li></ul></div>
+  </div>
+  <div class="grid2" style="margin-top:16px">
+    <div class="card">
+      <h3>훈장 1개당 가격 <span class="cap">(원)</span></h3>
+      <div class="chart-box"><canvas id="c-unit"></canvas></div>
+    </div>
+    <div class="card">
+      <h3>설계 포인트</h3>
+      <ul class="pts">
+        <li>천장 최대 비용 약 6.6만 원</li>
+        <li>무과금도 주간 미션 20개</li>
+        <li>출시 기념 무료 30개 지급</li>
+        <li>모든 묶음에 천장 적용</li>
+      </ul>
+      <div class="cap" style="margin-top:12px">한정 패키지 단가 330원 × 200회 기준</div>
+    </div>
+  </div>
+</section>
+
+<!-- 07 출시 -->
+<section id="launch">
+  <div class="sec-head"><span class="num">07</span><h2>출시 커뮤니케이션</h2></div>
+  <div class="road">
+    <div class="step"><b>D-14</b><span>개발자 노트: 확률 검증 방식 공개</span></div>
+    <div class="step"><b>D-7</b><span>체험용 훈장 30개 무료 지급</span></div>
+    <div class="step"><b>D-day</b><span>1주년 한정 패키지 출시</span></div>
+    <div class="step"><b>D+7</b><span>첫 서버 확률 리포트 공개</span></div>
+    <div class="step"><b>매주</b><span>통계 갱신, 오류 시 즉시 고지</span></div>
+  </div>
+</section>
+
+<!-- 08 KPI & 리스크 -->
+<section id="kpi">
+  <div class="sec-head"><span class="num">08</span><h2>성과 지표와 리스크</h2></div>
+  <div class="grid2">
+    <div class="card">
+      <h3>목표 지표 <span class="tag">가안</span></h3>
+      <div class="chart-box"><canvas id="c-kpi"></canvas></div>
+      <div class="cap">출시 4주 기준, 직전 4주 대비 변화율 목표</div>
+    </div>
+    <div class="card">
+      <h3>리스크와 대응</h3>
+      <table class="risk">
+        <tr><td>논란 재점화</td><td><span class="lvl h">높음</span> 사과·보상 맥락으로 출시</td></tr>
+        <tr><td>과금 유도 비판</td><td><span class="lvl m">중간</span> 무료 체험, 무과금 경로</td></tr>
+        <tr><td>천장 악용</td><td><span class="lvl l">낮음</span> 계정 귀속, 거래 불가</td></tr>
+        <tr><td>수치 미검증</td><td><span class="lvl m">중간</span> 실제 시세로 재산정 필요</td></tr>
+      </table>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <b>출처</b>
+    <ol>
+      <li><a href="https://sensortower.com/ko/blog/maplestory-idle-rpg-surpasses-100-million-in-cumulative-revenue">센서타워, 메이플 키우기 누적 매출 1억 달러 (2025.12)</a></li>
+      <li><a href="https://www.ceoscoredaily.com/page/view/2026012912101612299">CEO스코어데일리, 넥슨 전액환불 발표 (2026.01.29)</a></li>
+      <li><a href="https://v.daum.net/v/3ixEzmaegy">조선비즈, 메이플 키우기 확률 논란 (2026.01.28)</a></li>
+      <li><a href="https://isplus.com/article/view/isp202601290128">일간스포츠, 문의 대응과 사건 경위 (2026.01.29)</a></li>
+      <li><a href="https://gall.dcinside.com/gamedonga/19800">게임동아 기사 전재(디시인사이드), 출시 9일 만에 매출 1위</a></li>
+      <li><a href="https://maplestory.nexon.com/Guide/OtherProbability/ability/reputevalue">참고: 메이플스토리(PC) 어빌리티 확률 공시</a></li>
+    </ol>
+    <p>가안 표시 수치는 실제 시세 확인 후 재산정이 필요합니다.</p>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script>
+(function(){
+  if(!window.Chart) return;
+  const css = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+  const C = {ink:css('--ink'),muted:css('--muted'),line:css('--line'),acc:css('--accent'),tr:css('--trust'),warn:css('--warn'),accS:css('--accent-soft')};
+  Chart.defaults.font.family = css('--body');
+  Chart.defaults.color = C.muted;
+  Chart.defaults.borderColor = C.line;
+  Chart.defaults.maintainAspectRatio = false;
+  Chart.defaults.plugins.legend.labels.boxWidth = 12;
+  const noAnim = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(noAnim) Chart.defaults.animation = false;
+
+  new Chart(document.getElementById('c-rev'),{type:'bar',
+    data:{labels:['메이플 키우기','버섯커 키우기','카피바라 Go!'],
+      datasets:[{data:[100,59,37],backgroundColor:[C.acc,C.muted,C.muted],borderRadius:6}]},
+    options:{indexAxis:'y',plugins:{legend:{display:false}},scales:{x:{beginAtZero:true,max:110,ticks:{stepSize:20}},y:{grid:{display:false},ticks:{color:C.ink}}}}});
+
+  new Chart(document.getElementById('c-country'),{type:'doughnut',
+    data:{labels:['한국 67%','미국 16.6%','대만 7.1%','기타 9.3%'],
+      datasets:[{data:[67,16.6,7.1,9.3],backgroundColor:[C.acc,C.tr,C.muted,C.line],borderWidth:0}]},
+    options:{cutout:'62%',plugins:{legend:{position:'right',labels:{color:C.ink}}}}});
+
+  new Chart(document.getElementById('c-type'),{type:'bar',
+    data:{labels:['매출성','신뢰도','반복 구매','논란 위험 낮음'],
+      datasets:[
+        {label:'확률형',data:[5,1,5,1],backgroundColor:C.muted,borderRadius:4},
+        {label:'확정형',data:[2,5,2,5],backgroundColor:C.line,borderRadius:4},
+        {label:'하이브리드',data:[4,4,4,4],backgroundColor:C.acc,borderRadius:4}]},
+    options:{scales:{y:{beginAtZero:true,max:5,ticks:{stepSize:1}},x:{grid:{display:false},ticks:{color:C.ink}}}}});
+
+  const xs=[],noC=[],withC=[];
+  for(let n=0;n<=260;n+=10){xs.push(n);const v=+(100*(1-Math.pow(0.99,n))).toFixed(1);noC.push(v);withC.push(n>=200?100:v);}
+  new Chart(document.getElementById('c-ceil'),{type:'line',
+    data:{labels:xs,datasets:[
+      {label:'천장 200회',data:withC,borderColor:C.acc,backgroundColor:C.accS,fill:true,stepped:false,tension:0,pointRadius:0,borderWidth:3},
+      {label:'천장 없음',data:noC,borderColor:C.muted,borderDash:[5,4],pointRadius:0,borderWidth:2,fill:false}]},
+    options:{scales:{y:{min:0,max:100,ticks:{callback:v=>v+'%'}},x:{title:{display:true,text:'사용 횟수'},ticks:{maxTicksLimit:7}}},
+      plugins:{tooltip:{callbacks:{label:c=>c.dataset.label+': '+c.parsed.y+'%'}}}}});
+
+  new Chart(document.getElementById('c-unit'),{type:'bar',
+    data:{labels:['소량 10개','중량 120개','한정 300개'],
+      datasets:[{data:[550,458,330],backgroundColor:[C.muted,C.muted,C.acc],borderRadius:6}]},
+    options:{plugins:{legend:{display:false}},scales:{y:{beginAtZero:true,max:600,ticks:{stepSize:100}},x:{grid:{display:false},ticks:{color:C.ink}}}}});
+
+  new Chart(document.getElementById('c-kpi'),{type:'bar',
+    data:{labels:['구매 전환율','ARPPU','확률 문의','7일 이탈률'],
+      datasets:[{data:[15,10,-50,-10],backgroundColor:[C.acc,C.acc,C.tr,C.tr],borderRadius:6}]},
+    options:{indexAxis:'y',plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>(c.parsed.x>0?'+':'')+c.parsed.x+'%'}}},
+      scales:{x:{min:-60,max:20,ticks:{stepSize:20,callback:v=>(v>0?'+':'')+v+'%'}},y:{grid:{display:false},ticks:{color:C.ink}}}}});
+})();
+</script>
+</body>
+</html>
